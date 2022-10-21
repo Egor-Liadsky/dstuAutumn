@@ -7,7 +7,7 @@ class DbOperator:
         select_email = handlerDb._select_with_email(email)
         select_number = handlerDb._select_with_number(number)
         if isinstance(select_email, tuple) and isinstance(select_number, tuple):
-            return select_number[-1]
+            return utils.DataOperator.create_json_with_id(select_number[-1])
         return False
     def select_user_info(self, id: int) -> typing.Tuple[str] or None:
         user_info = handler.Db()._select_user_info(id)
