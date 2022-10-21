@@ -11,6 +11,6 @@ class Db:
     def select_password(self, user: str) -> str:
         pass
 
-    def new_user(self, user: str, secret_key: str, public_key: str) -> str:
+    def new_user(self, user: str, secret_key: str, public_key: str, public_name: str) -> str:
         pass
 
