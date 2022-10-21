@@ -5,7 +5,7 @@ plugins {
     id("org.jetbrains.compose") version "1.1.1"
 }
 
-group = "me.igeg9"
+group = "me.marat"
 version = "1.0"
 
 repositories {
