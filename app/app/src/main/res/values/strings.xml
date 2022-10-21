@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">app</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="auth">Авторизация</string>
+    <string name="fio">ФИО</string>
+    <string name="email">Почта</string>
+    <string name="phone">номер телефона</string>
+    <string name="next">Далее</string>
 </resources>
