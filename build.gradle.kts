@@ -1,12 +1,14 @@
 import org.jetbrains.compose.compose
+import org.jetbrains.compose.desktop.application.dsl.TargetFormat
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    kotlin("multiplatform") version "1.6.10"
-    id("org.jetbrains.compose") version "1.1.1"
+    kotlin("multiplatform")
+    id("org.jetbrains.compose")
 }
 
-group = "me.marat"
-version = "1.0"
+group "com.web"
+version "1.0-SNAPSHOT"
 
 repositories {
     google()

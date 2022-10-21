@@ -15,16 +15,6 @@ fun main() {
             }) {
                 Text("-")
             }
-
-            Span({ style { padding(15.px) } }) {
-                Text("$count")
-            }
-
-            Button(attrs = {
-                onClick { count += 1 }
-            }) {
-                Text("+")
-            }
         }
     }
 }
