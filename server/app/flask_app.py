@@ -8,6 +8,3 @@ app = Flask(__name__)
 def index():
     return "Hello world"
 
-@app.route('/test', methods=['GET'])
-def index():
-    return "Hello world"
