@@ -7,4 +7,4 @@ def not_found() -> str:
 
 @app.errorhandler(400)
 def bad_response() -> str:
-    return '400'
+    return "400"
