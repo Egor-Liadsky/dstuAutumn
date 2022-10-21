@@ -1,10 +1,17 @@
 from flask import Flask, request
-from server.database import requests
+from server.database import handler
 
 app = Flask(__name__)
 
 
-@app.route('/test', methods=['GET'])
+@app.route('/login', methods=['GET'])
+def login():
+    request.args.get('username')
+    request.args.get('password')
+    return '890'
+
+
+@app.route('/', methods=['GET'])
 def index():
     return "Hello world"
 
