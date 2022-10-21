@@ -1,3 +1,4 @@
+import typing
 
 from server.database import handler
 class DbOperator:
@@ -8,4 +9,6 @@ class DbOperator:
         if isinstance(select_email, tuple) and isinstance(select_number, tuple):
             return select_number[-1]
         return False
+    def select_user_info(self, id: int) -> typing.Tuple[str]:
+        return handler.Db()._select_user_info(id)
 

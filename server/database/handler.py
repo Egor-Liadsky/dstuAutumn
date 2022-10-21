@@ -18,6 +18,10 @@ class Db:
         self.cur.execute("SELECT user_id FROM users WHERE phone_number=%s", (number,))
         return self.cur.fetchone()
 
+    def _select_user_info(self, id: int) -> typing.Tuple[str] or None:
+        self.cur.execute("SELECT * FROM users WHERE user_id=%s", (id,))
+        return self.cur.fetchone()
+
     def new_user(self, user: str, secret_key: str, public_key: str, public_name: str):
         self.cur.execute("INSERT INTO public.users(email, secret_key, public_name, user_id, phone_number)"
                          "VALUES ('egor@mail.ru', 'random','Egor Lyadskiy', 42, '+1111');", ())
