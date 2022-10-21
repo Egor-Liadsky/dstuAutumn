@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/tasksFragment"
+        android:icon="@drawable/ic_tasks_foreground"
+        android:title="Задачи" />
+    <item
+        android:id="@+id/notesFragment"
+        android:icon="@drawable/ic_noteslist_foreground"
+        android:title="Заметки" />
+
+    <item
+        android:id="@+id/hotListFragment"
+        android:icon="@drawable/ic_hotlist_foreground"
+        android:title="Горячий список" />
+
+    <item
+        android:id="@+id/hiddenTasksFragment"
+        android:icon="@drawable/ic_tasks_foreground"
+        android:title="Скрытые задачи" />
+
+</menu>

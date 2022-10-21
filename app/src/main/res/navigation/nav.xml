@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav"
+    app:startDestination="@id/loginFragment">
+
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.android.app.fragments.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_loginFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.android.app.fragments.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_tasksFragment2"
+            app:destination="@id/tasksFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_notesFragment2"
+            app:destination="@id/notesFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_hotListFragment2"
+            app:destination="@id/hotListFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_hiddenTasksFragment"
+            app:destination="@id/hiddenTasksFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/tasksFragment"
+        android:name="com.android.app.fragments.TasksFragment"
+        android:label="fragment_tasks"
+        tools:layout="@layout/fragment_tasks" />
+    <fragment
+        android:id="@+id/notesFragment"
+        android:name="com.android.app.fragments.NotesFragment"
+        android:label="fragment_notes"
+        tools:layout="@layout/fragment_notes" />
+    <fragment
+        android:id="@+id/hotListFragment"
+        android:name="com.android.app.fragments.HotListFragment"
+        android:label="fragment_hot_list"
+        tools:layout="@layout/fragment_hot_list" />
+    <fragment
+        android:id="@+id/hiddenTasksFragment"
+        android:name="com.android.app.fragments.HiddenTasksFragment"
+        android:label="fragment_hidden_tasks"
+        tools:layout="@layout/fragment_hidden_tasks" />
+</navigation>
