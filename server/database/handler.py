@@ -1,18 +1,16 @@
 import psycopg2
-import settings
+from server.settings import database as setting
 
 class Db:
     def __init__(self):
-        connection = psycopg2.connect(settings.database.USER,
-                                      # пароль, который указали при установке PostgreSQL
-                                      settings.database.PASSWORD,
-                                      host="127.0.0.1",
-                                      port="5432")
-        pass
+        self.connection = psycopg2.connect(user=setting.USER,
+                                      password=setting.PASSWORD,
+                                      host=setting.HOST,
+                                      port=setting.PORT)
 
     def select_password(self, user: str) -> str:
         pass
 
-    def set_secret_key(self, user: str, secret_key: str) -> str:
+    def new_user(self, user: str, secret_key: str, public_key: str) -> str:
         pass
 
