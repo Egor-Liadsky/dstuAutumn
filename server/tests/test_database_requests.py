@@ -14,5 +14,7 @@ class MyTestCase(unittest.TestCase):
     def test_select_user_info_invalid(self):
         print(DBOperator.DbOperator().select_user_info(None))
 
+
+
 if __name__ == '__main__':
     unittest.main()
