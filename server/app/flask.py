@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from flask import Flask
-
+from server.setting import flask
 app = Flask(__name__)
 
 
@@ -20,4 +20,4 @@ def not_found():
 
 
 if __name__ == '__main__':
-    app.run(host=., port=8080)
+    app.run(host=flask.HOSTUSRL, port=8080)
