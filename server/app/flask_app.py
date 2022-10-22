@@ -51,10 +51,26 @@ def update_task():
         is_secret = request.args.get('is_secret')
         progress_start = request.args.get('progress_start')
         progress_end = request.args.get('progress_end')
-        result = requests.DbOperator.update_task(task_id=int(task_id), from_id=int(), to_id=int(to_id), title=title,
-                                                 text=text, is_secret=bool(is_secret), progress_start='',
-                                                 progress_end='')
+        time_start = request.args.get('time_start')
+        time_end = request.args.get('time_end')
+        result = requests.DbOperator().update_task(task_id=int(task_id), from_id=int(from_id), to_id=int(to_id), title=title,
+                                                 text=text, is_secret=bool(is_secret), progress_start=int(progress_start),
+                                                 progress_end=int(progress_end), time_start=time_start, time_end=time_end)
         return result
+
+
+@app.route('/all_users', methods=['POST'])
+def get_all_users():
+    result = requests.DbOperator().select_all_user()
+    return result
+
+
+@app.route('/user_info')
+def user_info():
+    user_id = request.args.get('id')
+    result = requests.DbOperator().select_user_info(id=int(user_id))
+    return result
+
 
 
 @app.route('/secret_key', methods=['GET'])
