@@ -21,6 +21,9 @@ class MyTestCase(unittest.TestCase):
     def test_select_like(self):
         print(handler.Db()._select_like_task("ti"))
 
+    def test_delete_task(self):
+        print(handler.Db()._delete_task(23))
+
 
 if __name__ == '__main__':
     unittest.main()

@@ -80,8 +80,14 @@ class Db:
 
     def _select_notes(self, note_id):
         sql = """SELECT uesr_id, title, text, note_id FROM public.notes WHERE note_id=%s"""
-        self.cur.execute(sql, (note_id))
+        self.cur.execute(sql, (note_id,))
         self.connection.commit()
         return self.cur.fetchone()
+
+    def _delete_task(self, task_id):
+        sql = """DELETE FROM public.task WHERE task_id=%s;"""
+        self.cur.execute(sql, (task_id,))
+        self.connection.commit()
+        return True
 
 

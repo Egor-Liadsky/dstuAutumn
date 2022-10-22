@@ -24,6 +24,9 @@ class MyTestCase(unittest.TestCase):
     def test_select_user_task(self):
         print(DBOperator.DbOperator().select_user_task(3))
 
+    def test_delete_user_task(self):
+        print(DBOperator.DbOperator().)
+
 
 
 
