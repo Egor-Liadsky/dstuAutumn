@@ -25,9 +25,16 @@ def register():
         return result
 
 
-@app.route('/', methods=['GET'])
-def index():
-    return "Hello world"
+@app.route('/create_task', methods=['POST'])
+def create_task():
+    if request.method == 'POST':
+        from_id = request.args.get('from_id')
+        to_id = request.args.get('to_id')
+        title = request.args.get('title')
+        text = request.args.get('text')
+        is_secret = request.args.get('is_secret')
+        result = requests.DbOperator().create_task(from_id=int(from_id), to_id=int(to_id), title=title, text=text, is_secret=bool(is_secret))
+        return result
 
 
 @app.route('/secret_key', methods=['GET'])
