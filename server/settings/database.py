@@ -1,4 +1,4 @@
 USER = "postgres"
 PASSWORD = "1234"
-HOST = "localhost"
-PORT = "5433"
+HOST = "10.46.89.208"
+PORT = "5432"
