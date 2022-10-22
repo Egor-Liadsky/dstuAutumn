@@ -31,14 +31,19 @@ def create_task():
         title = request.args.get('title')
         text = request.args.get('text')
         is_secret = request.args.get('is_secret')
-        result = requests.DbOperator().create_task(from_id=from_id, to_id=to_id, title=title, text=text, is_secret=is_secret)
+        result = requests.DbOperator().create_task(from_id=int(from_id), to_id=int(to_id), title=title, text=text, is_secret=bool(is_secret))
         return result
 
 
+@app.route('/secret_key', methods=['GET'])
+def secret_key():
+    # return {"result": requests.DbOperator().set_secret_key(request.args['secret_key'])}
+    return None
 
 
+@app.route('/new_user', methods=['POST'])
+def new_user():
+        return {"result": requests.DbOperator().new_user(request.args['user'], request.args['secret_key'],
+                                                         request.args['public_key'], request.args['public_name'], )}
 
-@app.route('/', methods=['GET'])
-def index():
-    return "Hello world"
 
