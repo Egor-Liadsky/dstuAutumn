@@ -15,6 +15,9 @@ class MyTestCase(unittest.TestCase):
     def test_select_user_info_invalid(self):
         print(DBOperator.DbOperator().select_user_info(None))
 
+    def test_update_task(self):
+        print(DBOperator.DbOperator().update_task(4, 1, 2, "titel", "teыыыxt", True, "0", "100"))
+
 
 
 
