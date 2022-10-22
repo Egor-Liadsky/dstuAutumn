@@ -14,6 +14,18 @@ class DataOperator:
         return json.dumps({'user_id': id}, ensure_ascii=False)
 
     @staticmethod
+    def create_json_all_users(users):
+        data = []
+        for user in users:
+            json_data = {'email': user[0],
+                         'public_name': user[2],
+                         "phone_number": user[3],
+                         "user_id": user[4],
+                         "is_moderator": user[5]}
+            data.append(json_data)
+        return json.dumps(data, ensure_ascii=False)
+
+    @staticmethod
     def create_json_task_id(id):
         return json.dumps({'task_id': id}, ensure_ascii=False)
 

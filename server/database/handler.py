@@ -28,6 +28,11 @@ class Db:
                          "VALUES (%s, %s, %s, %s)", (email, secret_key, public_name, phone_number,))
         return self.connection.commit()
 
+    def _select_all_user(self):
+        sql = """SELECT * FROM users"""
+        self.cur.execute(sql)
+        return self.cur.fetchall()
+
     def _insert_task(self, from_id, to_id, text, title, is_secret, progress_start, progress_end, time_start, time_end):
         sql = """INSERT INTO public.task(
         from_id, to_id, text, is_secret, progress_start, progress_end, title, time_start, time_end)

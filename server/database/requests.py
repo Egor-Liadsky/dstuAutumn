@@ -9,6 +9,9 @@ class DbOperator:
         if isinstance(select_email, tuple) and isinstance(select_number, tuple):
             return utils.DataOperator.create_json_with_id(select_number[-1])
         return False
+    def select_all_user(self):
+        users = handler.Db()._select_all_user()
+        return utils.DataOperator.create_json_all_users(users)
 
     def select_user_info(self, id: int) -> typing.Tuple[str] or None:
         user_info = handler.Db()._select_user_info(id)
