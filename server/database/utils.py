@@ -17,9 +17,9 @@ class DataOperator:
     def create_json_all_users(users):
         data = []
         for user in users:
-            json_data = {'email': user[0],
-                         'public_name': user[2],
-                         "phone_number": user[3],
+            json_data = {'email': user[3],
+                         'public_name': user[1],
+                         "phone_number": user[0],
                          "user_id": user[4],
                          "is_moderator": user[5]}
             data.append(json_data)

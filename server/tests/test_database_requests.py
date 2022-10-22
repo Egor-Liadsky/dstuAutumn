@@ -18,6 +18,9 @@ class MyTestCase(unittest.TestCase):
     def test_update_task(self):
         print(DBOperator.DbOperator().update_task(4, 1, 2, "titel", "teыыыxt", True, "0", "100"))
 
+    def test_select_all_user(self):
+        print(DBOperator.DbOperator().select_all_user())
+
 
 
 
