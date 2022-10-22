@@ -1,1 +1,2 @@
-from server.settings import *
+from server.settings import flask
+from server.settings import database
