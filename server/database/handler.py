@@ -56,8 +56,8 @@ class Db:
 
 
     def _select_user_task(self, user_id: int) -> typing.Tuple[str or int]:
-        sql = """SELECT task_id FROM public.task WHERE user_id = %s"""
-        self.cur.execute(sql, (user_id,))
+        sql = """SELECT task_id FROM public.task WHERE from_id=%s OR to_id=%s"""
+        self.cur.execute(sql, (user_id, user_id,))
         return self.cur.fetchall()
 
     def _select_like_task(self, title: str) -> typing.List[tuple]:
