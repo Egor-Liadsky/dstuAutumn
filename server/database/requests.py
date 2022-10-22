@@ -15,5 +15,6 @@ class DbOperator:
             return utils.DataOperator.create_json_db(user_info)
         return None
 
-
-
+    def new_user(self, email: str, secret_key: str, public_name: str, phone_number: str):
+        handler.Db().new_user(email, secret_key, public_name, phone_number)
+        return self.select_user(email, phone_number)

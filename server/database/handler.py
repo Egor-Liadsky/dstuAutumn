@@ -22,8 +22,8 @@ class Db:
         self.cur.execute("SELECT * FROM users WHERE user_id=%s", (id,))
         return self.cur.fetchone()
 
-    def new_user(self, user: str, secret_key: str, public_key: str, public_name: str):
-        self.cur.execute("INSERT INTO public.users(email, secret_key, public_name, user_id, phone_number)"
-                         "VALUES ('egor@mail.ru', 'random','Egor Lyadskiy', 42, '+1111');", ())
-        pass
+    def new_user(self, email: str, secret_key: str, public_name: str, phone_number: str):
+        self.cur.execute("INSERT INTO public.users(email, secret_key, public_name, phone_number) "
+                         "VALUES (%s, %s, %s, %s)", (email, secret_key, public_name, phone_number,))
+        self.connection.commit()
 

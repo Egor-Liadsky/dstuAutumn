@@ -12,5 +12,8 @@ class MyTestCase(unittest.TestCase):
     def test_check_user_invalid(self):
         handler.Db()._select_with_email("sdfasdfasdfasdf")
 
+    def test_new_user(self):
+        handler.Db().new_user('egor@mail.ru','rand', 'egor lyad', "+1111")
+
 if __name__ == '__main__':
     unittest.main()

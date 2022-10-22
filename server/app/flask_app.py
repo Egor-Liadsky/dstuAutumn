@@ -23,6 +23,7 @@ def secret_key():
 
 @app.route('/new_user', methods=['POST'])
 def secret_key():
-        return {"result": requests.DbOperator().new_user(request.args['user'], request.args['secret_key'], request.args['public_key'], request.args['public_name'])}
+        return {"result": requests.DbOperator().new_user(request.args['user'], request.args['secret_key'],
+                                                         request.args['public_key'], request.args['public_name'], )}
 
 
