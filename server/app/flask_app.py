@@ -20,7 +20,7 @@ def login():
 def register():
     if request.method == 'POST':
         r = request.json
-        handler.Db().new_user(email=r['email'], public_name=r['name'], phone_number=r['phone'], secret_key='')
+        handler.Db()._insert_user(email=r['email'], secret_key='', public_name=r['name'], phone_number=r['phone'])
         return '-- User registered'
 
 

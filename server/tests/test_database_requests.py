@@ -4,13 +4,13 @@ from server.database import requests as DBOperator
 
 class MyTestCase(unittest.TestCase):
     def test_select_user_valid(self):
-        print(DBOperator.DbOperator().select_user('egor@mail.ru', "+1111"))
+        print(DBOperator.DbOperator().select_user('ivan@mail.ru', "+1124"))
 
     def test_select_user_invalid(self):
         print(DBOperator.DbOperator().select_user('sdfasdfasdfegor@mail.ru', "+sadfasdf1111"))
 
     def test_select_user_info_valid(self):
-        print(DBOperator.DbOperator().select_user_info(42))
+        print(DBOperator.DbOperator().select_user_info(1))
 
     def test_select_user_info_invalid(self):
         print(DBOperator.DbOperator().select_user_info(None))

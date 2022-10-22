@@ -7,13 +7,16 @@ class MyTestCase(unittest.TestCase):
         handler.Db()
 
     def test_check_user_valid(self):
-        handler.Db()._select_with_email("egor@mail.ru")
+        print(handler.Db()._select_with_email("egor@mail.ru"))
 
     def test_check_user_invalid(self):
         handler.Db()._select_with_email("sdfasdfasdfasdf")
 
     def test_new_user(self):
-        handler.Db().new_user('egor@mail.ru','rand', 'egor lyad', "+1111")
+        handler.Db()._insert_user('egor@mail.ru', 'rand', 'egor lyad', "+1111")
+
+    def test_new_task(self):
+        handler.Db()._insert_task(1, 2, "titel", "text", "0", "0", "100")
 
 
 if __name__ == '__main__':
