@@ -59,29 +59,30 @@ def update_task():
         return result
 
 
-@app.route('/all_users', methods=['POST'])
+@app.route('/select_all_users', methods=['GET'])
 def get_all_users():
     result = requests.DbOperator().select_all_user()
     return result
 
 
-@app.route('/user_info')
+@app.route('/select_user_info', methods=['GET'])
 def user_info():
-    user_id = request.args.get('id')
+    user_id = request.args.get('user_id')
     result = requests.DbOperator().select_user_info(id=int(user_id))
     return result
 
 
+@app.route('/select_task', methods=['GET'])
+def select_task():
+    task_id = request.args.get('task_id')
+    result = requests.DbOperator().select_task(task_id=int(task_id))
+    return result
 
-@app.route('/secret_key', methods=['GET'])
-def secret_key():
-    # return {"result": requests.DbOperator().set_secret_key(request.args['secret_key'])}
-    return None
 
-
-@app.route('/new_user', methods=['POST'])
-def new_user():
-        return {"result": requests.DbOperator().new_user(request.args['user'], request.args['secret_key'],
-                                                         request.args['public_key'], request.args['public_name'], )}
+@app.route('/select_user_task', methods=['GET'])
+def select_user_task():
+    user_id = request.args.get('user_id')
+    result = requests.DbOperator().select_user_task(user_id=int(user_id))
+    return result
 
 

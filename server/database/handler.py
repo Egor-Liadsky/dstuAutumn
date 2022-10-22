@@ -43,7 +43,7 @@ class Db:
 
     def _update_task(self, task_id, from_id, to_id, text, title, is_secret, progress_start, progress_end, time_start, time_end):
         sql = """UPDATE public.task
-        SET from_id=%s, to_id=%s, text=%s, is_secret=%s, progress_start=%s, progress_end=%s, title=%s time_start=%s, time_end=%s
+        SET from_id=%s, to_id=%s, text=%s, is_secret=%s, progress_start=%s, progress_end=%s, title=%s, time_start=%s, time_end=%s
         WHERE task_id=%s"""
         self.cur.execute(sql, (from_id, to_id, text, is_secret, progress_start, progress_end, title, task_id, time_start, time_end))
         self.connection.commit()
