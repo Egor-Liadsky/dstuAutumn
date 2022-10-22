@@ -22,7 +22,7 @@ class MyTestCase(unittest.TestCase):
         print(DBOperator.DbOperator().select_all_user())
 
     def test_select_user_task(self):
-        print(DBOperator.DbOperator().select_user_task(2))
+        print(DBOperator.DbOperator().select_user_task(3))
 
 
 

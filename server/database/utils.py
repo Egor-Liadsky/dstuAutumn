@@ -27,7 +27,7 @@ class DataOperator:
 
     @staticmethod
     def create_json_task_id(id):
-        return json.dumps({'task_id': id}, ensure_ascii=False)
+        return json.dumps({'task_id':  list(map(lambda x: x[-1], id))}, ensure_ascii=False)
 
     @staticmethod
     def create_json_task_info(task_data):
