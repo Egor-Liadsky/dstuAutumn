@@ -5,10 +5,14 @@ class DataOperator:
         json_data = {'email': data[0],
                      'public_name': data[2],
                      "phone_number": data[3],
-                     "user_id": data[4]}
+                     "user_id": data[4],
+                     "is_moderator": data[5]}
         return json.dumps(json_data, ensure_ascii=False)
 
     @staticmethod
     def create_json_with_id(id):
-        json_data = {'user_id': id}
-        return json.dumps(json_data, ensure_ascii=False)
+        return json.dumps({'user_id': id}, ensure_ascii=False)
+
+    @staticmethod
+    def create_json_task_id(id):
+        return json.dumps({'task_id': id}, ensure_ascii=False)
