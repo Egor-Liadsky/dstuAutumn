@@ -1,6 +1,7 @@
 import unittest
 from server.database import requests as DBOperator
 
+
 class MyTestCase(unittest.TestCase):
     def test_select_user_valid(self):
         print(DBOperator.DbOperator().select_user('egor@mail.ru', "+1111"))

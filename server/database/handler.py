@@ -1,7 +1,7 @@
 import typing
-
 import psycopg2
 from server.settings import database as setting
+
 
 class Db:
     def __init__(self):
@@ -10,6 +10,7 @@ class Db:
                                       host=setting.HOST,
                                       port=setting.PORT)
         self.cur = self.connection.cursor()
+
     def _select_with_email(self, email: str) -> typing.Tuple[str] or None:
         self.cur.execute("SELECT user_id FROM users WHERE email=%s", (email,))
         return self.cur.fetchone()
