@@ -12,15 +12,14 @@ def login():
         email = request.args.get('email')
         phone = request.args.get('phone')
         result = requests.DbOperator().select_user(email, phone)
-        print(result)
-        return 'klk'
+        return f'{result}'
 
 
 @app.route('/register', methods=['POST'])
 def register():
     if request.method == 'POST':
         r = request.json
-        handler.Db()._insert_user(email=r['email'], secret_key='', public_name=r['name'], phone_number=r['phone'])
+        handler.Db().new_user(email=r['email'], public_name=r['name'], phone_number=r['phone'], secret_key='')
         return '-- User registered'
 
 
