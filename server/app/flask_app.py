@@ -18,9 +18,11 @@ def login():
 @app.route('/register', methods=['POST'])
 def register():
     if request.method == 'POST':
-        r = request.json
-        handler.Db().new_user(email=r['email'], public_name=r['name'], phone_number=r['phone'], secret_key='')
-        return '-- User registered'
+        email = request.args.get('email')
+        public_name = request.args.get('name')
+        phone_number = request.args.get('phone').replace('+', '')
+        result = requests.DbOperator().new_user(email=email, secret_key='', public_name=public_name, phone_number=phone_number)
+        return result
 
 
 @app.route('/', methods=['GET'])
