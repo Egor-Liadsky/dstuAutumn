@@ -1,5 +1,7 @@
 from flask import Flask, request
-from server.database import handler, requests
+from server.database import requests, handler
+from flask_sqlalchemy import SQLAlchemy
+
 
 app = Flask(__name__)
 
@@ -38,6 +40,32 @@ def create_task():
         return result
 
 
-@app.route('/', methods=['GET'])
-def index():
-    return "Hello world"
+@app.route('/update_task', methods=['POST'])
+def update_task():
+    if request.method == 'POST':
+        task_id = request.args.get('task_id')
+        from_id = request.args.get('from_id')
+        to_id = request.args.get('to_id')
+        title = request.args.get('title')
+        text = request.args.get('text')
+        is_secret = request.args.get('is_secret')
+        progress_start = request.args.get('progress_start')
+        progress_end = request.args.get('progress_end')
+        result = requests.DbOperator.update_task(task_id=int(task_id), from_id=int(), to_id=int(to_id), title=title,
+                                                 text=text, is_secret=bool(is_secret), progress_start='',
+                                                 progress_end='')
+        return result
+
+
+@app.route('/secret_key', methods=['GET'])
+def secret_key():
+    # return {"result": requests.DbOperator().set_secret_key(request.args['secret_key'])}
+    return None
+
+
+@app.route('/new_user', methods=['POST'])
+def new_user():
+        return {"result": requests.DbOperator().new_user(request.args['user'], request.args['secret_key'],
+                                                         request.args['public_key'], request.args['public_name'], )}
+
+
