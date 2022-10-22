@@ -1,1 +1,1 @@
-HOST_URL = "192.168.137.189"
+HOST_URL = "localhost"

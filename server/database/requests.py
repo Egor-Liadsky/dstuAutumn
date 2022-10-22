@@ -25,18 +25,20 @@ class DbOperator:
 
     def create_task(self, from_id: int, to_id: int, title: str, text: str, is_secret: bool, time_start, time_end):
         task_id = handler.Db()._insert_task(from_id, to_id, text, title, is_secret, 0, 100, time_start, time_end)
-        return utils.DataOperator.create_json_task_id(task_id)
+        return utils.DataOperator.create_json_task_info(task_id)
 
     def update_task(self, task_id: int, from_id: int, to_id: int, title: str, text: str, is_secret: bool, progress_start, progress_end):
         task_id = handler.Db()._update_task(task_id, from_id, to_id, text, title, is_secret, progress_start, progress_end)
-        return utils.DataOperator.create_json_task_id(task_id)
+        return utils.DataOperator.create_json_task_info(task_id)
 
     def select_task(self, task_id: int):
         task_id = handler.Db()._select_task(task_id)
-        return utils.DataOperator.create_json_task_id(task_id)
+        return utils.DataOperator.create_json_task_info(task_id)
 
     def select_user_task(self, user_id: int) -> typing.Tuple[int]:
         task_id = handler.Db()._select_user_task(user_id)
-        return utils.DataOperator.create_json_task_id(task_id)
+        return utils.DataOperator.create_json_task_info(task_id)
 
-
+    def select_del_task(self, task_id: int):
+        is_like = handler.Db()._delete_task(task_id)
+        return utils.DataOperator.create_json_del_task(is_like)

@@ -1,3 +1,5 @@
+import typing
+
 from flask import Flask, request
 from server.database import requests, handler
 from flask_sqlalchemy import SQLAlchemy
@@ -43,19 +45,21 @@ def create_task():
 @app.route('/update_task', methods=['POST'])
 def update_task():
     if request.method == 'POST':
-        task_id = request.args.get('task_id')
-        from_id = request.args.get('from_id')
-        to_id = request.args.get('to_id')
-        title = request.args.get('title')
-        text = request.args.get('text')
-        is_secret = request.args.get('is_secret')
-        progress_start = request.args.get('progress_start')
-        progress_end = request.args.get('progress_end')
-        time_start = request.args.get('time_start')
-        time_end = request.args.get('time_end')
-        result = requests.DbOperator().update_task(task_id=int(task_id), from_id=int(from_id), to_id=int(to_id), title=title,
-                                                 text=text, is_secret=bool(is_secret), progress_start=int(progress_start),
-                                                 progress_end=int(progress_end), time_start=time_start, time_end=time_end)
+
+        task_data: typing.Dict[str or int or bool] = {}
+        task_data.update(task_id=request.args.get('task_id'))
+        task_data.update(from_id = request.args.get('from_id'))
+        task_data.update(to_id = request.args.get('to_id'))
+        task_data.update(title = request.args.get('title'))
+        task_data.update(text = request.args.get('text'))
+        task_data.update(is_secret = bool(request.args.get('is_secret')))
+        task_data.update(task_id=request.args.get('task_id'))
+        task_data.update(progress_start = request.args.get('progress_start'))
+        task_data.update(progress_end = request.args.get('progress_end'))
+        task_data.update(time_start = request.args.get('time_start'))
+        task_data.update(time_end = request.args.get('time_end'))
+
+        result = requests.DbOperator().update_task(**task_data)
         return result
 
 
@@ -85,4 +89,8 @@ def select_user_task():
     result = requests.DbOperator().select_user_task(user_id=int(user_id))
     return result
 
-
+@app.route('/delete_task', methods=['DELETE'])
+def delete_task():
+    task_id = request.args.get('task_id')
+    result = requests.DbOperator().select_del_task(task_id=int(task_id))
+    return result

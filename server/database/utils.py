@@ -26,13 +26,9 @@ class DataOperator:
         return json.dumps(data, ensure_ascii=False)
 
     @staticmethod
-    def create_json_task_id(id):
+    def create_json_task_info(id):
         return json.dumps({'task_id':  list(map(lambda x: x[-1], id))}, ensure_ascii=False)
 
     @staticmethod
-    def create_json_task_info(task_data):
-        return json.dumps({'task_id': id}, ensure_ascii=False)
-
-    @staticmethod
-    def create_json_del_task():
-        return json.dumps({'task_id': id}, ensure_ascii=False)
+    def create_json_del_task(is_like):
+        return json.dumps({'responce': is_like}, ensure_ascii=False)

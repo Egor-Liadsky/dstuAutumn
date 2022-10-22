@@ -73,7 +73,7 @@ class Db:
         self.connection.commit()
         return self.cur.fetchone()
 
-    def _update_notes(self, title, text, note_id):
+    def _update_notes(self, title: str, text: str, note_id: str):
         sql = """UPDATE public.notes title=%s, text=%s WHERE note_id=%s"""
         self.cur.execute(sql, (title, text, note_id))
         return note_id
