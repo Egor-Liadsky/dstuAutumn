@@ -16,7 +16,10 @@ class MyTestCase(unittest.TestCase):
         handler.Db()._insert_user('egor@mail.ru', 'rand', 'egor lyad', "+1111")
 
     def test_new_task(self):
-        handler.Db()._insert_task(1, 2, "titel", "text", "0", "0", "100")
+        handler.Db()._insert_task(1, 2, "titel", "text", "0", "0", "100", '', '')
+
+    def test_select_like(self):
+        print(handler.Db()._select_like_task("ti"))
 
 
 if __name__ == '__main__':

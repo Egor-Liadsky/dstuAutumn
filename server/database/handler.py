@@ -44,4 +44,33 @@ class Db:
         self.connection.commit()
         return task_id
 
+    def _select_task(self, task_id: int) -> typing.Tuple[str or int]:
+        sql = """SELECT * FROM public.task WHERE task_id = %s"""
+        self.cur.execute(sql, (task_id,))
+        return self.cur.fetchone()
+
+    def _select_like_task(self, title: str) -> typing.List[tuple]:
+        sql = """SELECT task_id FROM public.task WHERE title LIKE %s;"""
+        self.cur.execute(sql, ("%"+title+"%",))
+        return self.cur.fetchall()
+
+    def _insert_notes(self, user_id, title, text):
+        sql = """INSERT INTO public.notes(
+                uesr_id, title, text)
+                VALUES (%s, %s, %s) RETURNING note_id"""
+        self.cur.execute(sql, (user_id, title, text))
+        self.connection.commit()
+        return self.cur.fetchone()
+
+    def _update_notes(self, title, text, note_id):
+        sql = """UPDATE public.notes title=%s, text=%s WHERE note_id=%s"""
+        self.cur.execute(sql, (title, text, note_id))
+        return note_id
+
+    def _select_notes(self, note_id):
+        sql = """SELECT uesr_id, title, text, note_id FROM public.notes WHERE note_id=%s"""
+        self.cur.execute(sql, (note_id))
+        self.connection.commit()
+        return self.cur.fetchone()
+
 

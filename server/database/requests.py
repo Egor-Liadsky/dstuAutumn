@@ -28,3 +28,7 @@ class DbOperator:
         task_id = handler.Db()._update_task(task_id, from_id, to_id, text, title, is_secret, progress_start, progress_end)
         return utils.DataOperator.create_json_task_id(task_id)
 
+    def select_task(self, task_id: int):
+        task_id = handler.Db()._select_task(task_id)
+        return utils.DataOperator.create_json_task_id(task_id)
+
