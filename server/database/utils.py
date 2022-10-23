@@ -36,14 +36,11 @@ class DataOperator:
     def create_json_task_all_info(task_data: typing.List[tuple]):
         tasks = []
         for task in task_data:
-            task_data = {""}
-            tasks.append(task)
-        return json.dumps(task, ensure_ascii=False)
+            temp_task = {}
+            temp_task.update(from_id=task_data[0])
+            tasks.append(temp_task)
+        return json.dumps(tasks, ensure_ascii=False)
 
     @staticmethod
     def create_json_del_task(is_like):
         return json.dumps({'responce': is_like}, ensure_ascii=False)
-
-    @staticmethod
-    def create_json_note_info(id):
-        return json.dumps({'note_id':  list(map(lambda x: str(x)[-1], id))}, ensure_ascii=False)
