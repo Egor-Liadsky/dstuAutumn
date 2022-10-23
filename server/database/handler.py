@@ -54,6 +54,10 @@ class Db:
         self.cur.execute(sql, (task_id,))
         return self.cur.fetchone()
 
+    def _select_all_task(self) -> typing.Tuple[str or int]:
+        sql = """SELECT * FROM public.task WHERE is_secret=%s"""
+        self.cur.execute(sql, (False,))
+        return self.cur.fetchall()
 
     def _select_user_task(self, user_id: int) -> typing.Tuple[str or int]:
         sql = """SELECT task_id FROM public.task WHERE from_id=%s OR to_id=%s"""

@@ -1,4 +1,4 @@
 USER = "postgres"
 PASSWORD = "1234"
-HOST = "192.168.137.189"
+HOST = "192.168.137.45"
 PORT = "5432"

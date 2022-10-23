@@ -35,6 +35,10 @@ class DbOperator:
         task_id = handler.Db()._select_task(task_id)
         return utils.DataOperator.create_json_task_info(task_id)
 
+    def select_all_task(self):
+        tasks = handler.Db()._select_all_task()
+        return utils.DataOperator.create_json_task_all_info(tasks)
+
     def select_user_task(self, user_id: int) -> typing.Tuple[int]:
         task_id = handler.Db()._select_user_task(user_id)
         return utils.DataOperator.create_json_task_info(task_id)

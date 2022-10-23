@@ -1,1 +1,1 @@
-HOST_URL = "localhost"
+HOST_URL = "0.0.0.0"
