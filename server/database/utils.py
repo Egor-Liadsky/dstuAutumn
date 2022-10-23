@@ -37,7 +37,9 @@ class DataOperator:
         tasks = []
         for task in task_data:
             temp_task = {}
-            temp_task.update(from_id=task_data[0])
+            temp_task.update(from_id=task_data[0], to_id=task_data[1], text=task_data[2], is_secret=task_data[3],
+                             progress_start=task_data[4], progress_end=task_data[5], title=task_data[6],
+                             time_start=task_data[7], time_end=task_data[8], task_id=task_data[9])
             tasks.append(temp_task)
         return json.dumps(tasks, ensure_ascii=False)
 
