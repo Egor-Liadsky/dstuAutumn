@@ -43,7 +43,7 @@ class DataOperator:
             temp_task.update(is_secret=task_data[3])
             temp_task.update(progress_start=task_data[4])
             temp_task.update(progress_end=task_data[5])
-            temp_task.update(itle=task_data[6])
+            temp_task.update(title=task_data[6])
             temp_task.update(time_start=task_data[7])
             temp_task.update(time_end=task_data[8])
             temp_task.update(task_id=task_data[9])
