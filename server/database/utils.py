@@ -53,3 +53,7 @@ class DataOperator:
     @staticmethod
     def create_json_del_task(is_like):
         return json.dumps({'responce': is_like}, ensure_ascii=False)
+
+    @staticmethod
+    def create_json_note_info(id):
+        return json.dumps({'note_id':  list(map(lambda x: x[-1], id))}, ensure_ascii=False)
