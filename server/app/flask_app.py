@@ -90,7 +90,26 @@ def select_user_task():
     return result
 
 @app.route('/delete_task', methods=['DELETE'])
-def delete_task():
+def del_task():
     task_id = request.args.get('task_id')
     result = requests.DbOperator().select_del_task(task_id=int(task_id))
+    return result
+
+@app.route('/select_all_task', methods=['GET'])
+def get_all_task():
+    result = requests.DbOperator().select_all_task()
+    return result
+
+@app.route('/create_note', methods=['POST'])
+def create_note():
+    from_id = request.args.get('from_id')
+    title = request.args.get('title')
+    text = request.args.get('text')
+    result = requests.DbOperator().create_note(from_id=int(from_id), title=title, text=text)
+    return result
+
+@app.route('/select_note', methods=['GET'])
+def select_note():
+    from_id = request.args.get('from_id')
+    result = requests.DbOperator().select_note(from_id=int(from_id))
     return result

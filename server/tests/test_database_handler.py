@@ -24,6 +24,9 @@ class MyTestCase(unittest.TestCase):
     def test_delete_task(self):
         print(handler.Db()._delete_task(23))
 
+    def test_get_all_task(self):
+        print(handler.Db()._select_all_task())
+
 
 if __name__ == '__main__':
     unittest.main()

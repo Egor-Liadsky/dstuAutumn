@@ -1,4 +1,6 @@
 import typing
+from typing import List, Tuple, Any
+
 import psycopg2
 from server.settings import database as setting
 
@@ -54,9 +56,9 @@ class Db:
         self.cur.execute(sql, (task_id,))
         return self.cur.fetchone()
 
-    def _select_all_task(self) -> typing.Tuple[str or int]:
-        sql = """SELECT * FROM public.task WHERE is_secret=%s"""
-        self.cur.execute(sql, (False,))
+    def _select_all_task(self) -> list[tuple[Any, ...]]:
+        sql = """SELECT * FROM public.task"""
+        self.cur.execute(sql)
         return self.cur.fetchall()
 
     def _select_user_task(self, user_id: int) -> typing.Tuple[str or int]:
@@ -82,16 +84,17 @@ class Db:
         self.cur.execute(sql, (title, text, note_id))
         return note_id
 
-    def _select_notes(self, note_id):
-        sql = """SELECT uesr_id, title, text, note_id FROM public.notes WHERE note_id=%s"""
-        self.cur.execute(sql, (note_id,))
+    def _select_notes(self, from_id):
+        sql = """SELECT uesr_id, title, text, note_id FROM public.notes WHERE uesr_id=%s"""
+        self.cur.execute(sql, (from_id,))
         self.connection.commit()
         return self.cur.fetchone()
-
+# Фиг знает как работает, но работает плохова-то
     def _delete_task(self, task_id):
         sql = """DELETE FROM public.task WHERE task_id=%s;"""
         self.cur.execute(sql, (task_id,))
         self.connection.commit()
         return True
+
 
 
