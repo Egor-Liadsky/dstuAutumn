@@ -49,7 +49,7 @@ class Db:
         WHERE task_id=%s"""
         self.cur.execute(sql, (from_id, to_id, text, is_secret, progress_start, progress_end, title, task_id, time_start, time_end))
         self.connection.commit()
-        return task_id
+        return (task_id)
 
     def _select_task(self, task_id: int) -> typing.Tuple[str or int]:
         sql = """SELECT * FROM public.task WHERE task_id = %s"""

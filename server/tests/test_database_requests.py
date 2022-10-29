@@ -4,7 +4,7 @@ from server.database import requests as DBOperator
 
 class MyTestCase(unittest.TestCase):
     def test_select_user_valid(self):
-        print(DBOperator.DbOperator().select_user('ivan@mail.ru', "+1124"))
+        print(DBOperator.DbOperator().select_user('ivan@mail.ru', "1124"))
 
     def test_select_user_invalid(self):
         print(DBOperator.DbOperator().select_user('sdfasdfasdfegor@mail.ru', "+sadfasdf1111"))

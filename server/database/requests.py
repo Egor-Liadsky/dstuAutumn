@@ -2,13 +2,13 @@ import typing
 
 from server.database import handler, utils, obj
 class DbOperator:
-    def select_user(self, email: str, number: str) -> bool:
+    def select_user(self, email: str, number: str) -> str:
         handlerDb = handler.Db()
         select_email = handlerDb._select_with_email(email)
         select_number = handlerDb._select_with_number(number)
         if isinstance(select_email, tuple) and isinstance(select_number, tuple):
             return utils.DataOperator.create_json_with_id(select_number[-1])
-        return False
+        return utils.DataOperator.create_json_with_id(None)
     def select_all_user(self):
         users = handler.Db()._select_all_user()
         return utils.DataOperator.create_json_all_users(users)
